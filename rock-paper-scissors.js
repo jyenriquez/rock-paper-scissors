@@ -6,7 +6,15 @@ for(let i=0; i<5; i++){
     alert(game(playerSelection) + `\n Player Wins: ${playerWins} Computer Wins: ${computerWins}`);
 }
 
-function computerPlay() {
+if(playerWins > computerWins) {
+    alert("You won :) Congratulations!");
+} else if (playerWins < computerWins) {
+    alert("You lost :( Sorry!");
+} else {
+    alert("It's a tie! :o");
+}
+
+function computerPlay() { //returns a string
     let computerChoice = Math.floor(Math.random()*3);
     switch(computerChoice){
         case 0:
@@ -18,7 +26,7 @@ function computerPlay() {
     }
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) { //Takes in 2 Strings, returns a string
     let roundMessage;
     playerSelection = playerSelection.toLowerCase();
 
@@ -37,10 +45,11 @@ function playRound(playerSelection, computerSelection) {
     } else if (playerSelection == "scissors" && computerSelection == "paper") {
         roundMessage = "You win! Scissors beats paper";
     }
+
     return roundMessage;
 }
 
-function game(playerSelection) {
+function game(playerSelection) { //Takes in a string, returns a string
     let roundMessage = playRound(playerSelection, computerPlay());
     if(roundMessage == "You win! Rock beats paper" || roundMessage == "You win! Paper beats rock"
     || roundMessage == "You win! Scissors beats paper") {
